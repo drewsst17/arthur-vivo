@@ -14,5 +14,10 @@ def receber_mensagem():
     nova = Mensagem(conteudo=msg)
     db.session.add(nova)
     db.session.commit()
-
     return jsonify({'resposta': 'Mensagem registrada com sucesso 🧠'})
+
+@mensagem_bp.route('/mensagens', methods=['GET'])
+def listar_mensagens():
+    mensagens = Mensagem.query.order_by(Mensagem.id.desc()).all()
+    return jsonify([{'id': m.id, 'conteudo': m.conteudo} for m in mensagens])
+)
