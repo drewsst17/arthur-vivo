@@ -19,5 +19,7 @@ def receber_mensagem():
 @mensagem_bp.route('/mensagens', methods=['GET'])
 def listar_mensagens():
     mensagens = Mensagem.query.order_by(Mensagem.id.desc()).all()
-    return jsonify([{'id': m.id, 'conteudo': m.conteudo} for m in mensagens])
-)
+    return jsonify([
+        {'id': m.id, 'conteudo': m.conteudo}
+        for m in mensagens
+    ])
