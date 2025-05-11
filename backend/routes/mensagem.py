@@ -4,8 +4,6 @@ from database import db
 import openai
 import os
 
-print("🧠 OPENAI_API_KEY carregada? ", bool(os.getenv("OPENAI_API_KEY")))
-
 mensagem_bp = Blueprint('mensagem_bp', __name__, url_prefix='/api')
 
 # 🔑 Configuração da API OpenAI
